@@ -192,6 +192,18 @@ button:hover {
   display: none;
 }
 
+#network-status {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  min-width: 250px;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
 footer {
   text-align: center;
   margin-top: 30px;

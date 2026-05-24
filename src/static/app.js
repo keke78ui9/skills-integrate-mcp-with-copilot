@@ -1,4 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Offline/online status notification
+  function updateOnlineStatus() {
+    const statusDiv = document.getElementById("network-status");
+    if (!statusDiv) return;
+    if (navigator.onLine) {
+      statusDiv.textContent = "You are online.";
+      statusDiv.className = "info";
+      setTimeout(() => statusDiv.className = "hidden", 3000);
+    } else {
+      statusDiv.textContent = "You are offline. Some features may be unavailable.";
+      statusDiv.className = "error";
+    }
+  }
+
+  // Add a status div to the page
+  let statusDiv = document.createElement("div");
+  statusDiv.id = "network-status";
+  statusDiv.className = "hidden";
+  document.body.insertBefore(statusDiv, document.body.firstChild);
+
+  window.addEventListener('online', updateOnlineStatus);
+  window.addEventListener('offline', updateOnlineStatus);
+  updateOnlineStatus();
   const activitiesList = document.getElementById("activities-list");
   const activitySelect = document.getElementById("activity");
   const signupForm = document.getElementById("signup-form");
